@@ -4,24 +4,26 @@ import SectionHeading from './SectionHeading.jsx'
 import { pricing } from '../data/siteData.js'
 
 export default function Pricing() {
+  const visiblePricing = pricing.filter((tier) => tier.name !== 'Prototype')
+
   return (
     <AnimatedSection id="pricing" className="bg-white py-20 sm:py-24">
       <div className="section-shell">
         <SectionHeading
           eyebrow="Pricing placeholders"
-          title="Flexible packages for prototypes, deployments, and platform partnerships."
+          title="Flexible packages for deployments and platform partnerships."
           description="The frontend is ready for real prices later. For now, the structure supports custom startup pricing while the product scope is validated."
           align="center"
         />
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {pricing.map((tier) => (
+        <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-5 lg:grid-cols-2">
+          {visiblePricing.map((tier) => (
             <div
               key={tier.name}
               className={
                 tier.highlighted
-                  ? 'rounded-lg border-2 border-teal-500 bg-slate-950 p-6 text-white shadow-xl shadow-teal-950/20'
-                  : 'card'
+                  ? 'flex h-full flex-col rounded-lg border-2 border-teal-500 bg-slate-950 p-6 text-white shadow-xl shadow-teal-950/20'
+                  : 'card flex h-full flex-col'
               }
             >
               {tier.highlighted ? (
@@ -49,12 +51,11 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a
-                href="#contact"
-                className={tier.highlighted ? 'secondary-button mt-8 w-full' : 'primary-button mt-8 w-full'}
-              >
-                Talk to us
-              </a>
+              <div className="mt-auto pt-8">
+                <a href="#contact" className={tier.highlighted ? 'secondary-button w-full' : 'primary-button w-full'}>
+                  Talk to us
+                </a>
+              </div>
             </div>
           ))}
         </div>
