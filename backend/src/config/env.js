@@ -46,4 +46,6 @@ export const env = {
   mailFrom: process.env.MAIL_FROM,
   adminEmail: process.env.ADMIN_EMAIL,
   sendAutoReply: toBoolean(process.env.SEND_AUTO_REPLY, true),
+  geminiApiKey: process.env.GEMINI_API_KEY || '',
+  geminiModel: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
 }

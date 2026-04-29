@@ -18,6 +18,10 @@ export const createContact = asyncHandler(async (req, res) => {
       ip: req.ip,
       userAgent: req.get('user-agent') || null,
       origin: req.get('origin') || null,
+      selectedPackage: req.body.selectedPackage || null,
+      recommendedSensors: req.body.recommendedSensors || [],
+      useCaseSummary: req.body.useCaseSummary || null,
+      needsIntegration: req.body.needsIntegration ?? null,
     },
   }
 

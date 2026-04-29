@@ -1,9 +1,10 @@
 import { CheckCircle2 } from 'lucide-react'
 import AnimatedSection from './AnimatedSection.jsx'
+import CustomPackageBuilder from './CustomPackageBuilder.jsx'
 import SectionHeading from './SectionHeading.jsx'
 import { pricing } from '../data/siteData.js'
 
-export default function Pricing() {
+export default function Pricing({ onRecommendationSelect }) {
   const visiblePricing = pricing.filter((tier) => tier.name !== 'Prototype')
 
   return (
@@ -59,6 +60,8 @@ export default function Pricing() {
             </div>
           ))}
         </div>
+
+        <CustomPackageBuilder onRecommendationSelect={onRecommendationSelect} />
       </div>
     </AnimatedSection>
   )

@@ -25,6 +25,24 @@ export const contactValidator = [
     .trim()
     .isLength({ max: 120 })
     .withMessage('Industry must be 120 characters or fewer.'),
+  body('selectedPackage')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isIn(['Deployment', 'Platform'])
+    .withMessage('Selected package must be Deployment or Platform.'),
+  body('recommendedSensors')
+    .optional()
+    .isArray({ max: 10 })
+    .withMessage('Recommended sensors must be an array.'),
+  body('recommendedSensors.*')
+    .optional()
+    .isString()
+    .withMessage('Each recommended sensor must be a string.'),
+  body('useCaseSummary')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 500 })
+    .withMessage('Use case summary must be 500 characters or fewer.'),
   body('deviceCount')
     .optional({ checkFalsy: true })
     .isInt({ min: 1, max: 100000 })
@@ -33,6 +51,10 @@ export const contactValidator = [
     .optional({ checkFalsy: true })
     .isInt({ min: 1, max: 100000 })
     .withMessage('Device count must be a positive number.'),
+  body('needsIntegration')
+    .optional()
+    .isBoolean()
+    .withMessage('Needs integration must be true or false.'),
   body('message')
     .trim()
     .isLength({ min: 10, max: 2000 })

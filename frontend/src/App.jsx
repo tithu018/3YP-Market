@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import ProblemSolution from './components/ProblemSolution.jsx'
@@ -13,6 +14,8 @@ import ContactCTA from './components/ContactCTA.jsx'
 import Footer from './components/Footer.jsx'
 
 export default function App() {
+  const [selectedRecommendation, setSelectedRecommendation] = useState(null)
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#f7f4ec] text-slate-950">
       <Navbar />
@@ -25,9 +28,9 @@ export default function App() {
         <Industries />
         <Security />
         <Testimonials />
-        <Pricing />
+        <Pricing onRecommendationSelect={setSelectedRecommendation} />
         <FAQ />
-        <ContactCTA />
+        <ContactCTA selectedRecommendation={selectedRecommendation} />
       </main>
       <Footer />
     </div>
